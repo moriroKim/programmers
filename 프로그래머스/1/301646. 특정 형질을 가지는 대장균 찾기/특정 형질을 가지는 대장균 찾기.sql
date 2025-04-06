@@ -1,17 +1,14 @@
--- 8(1000) => 형질 4
--- 15(1111) => 형질 4, 3, 2, 1
--- 1(0001) => 형질 1
--- 13(1101) => 형질 4, 3, 1
--- (2번 형질을 포함하지 X) AND 1번 OR 3번 OR 1번, 3번
--- => (0010, 1110, 1010, 0011, 0111) AND (0001 OR 0100 OR 0101)
--- => (2, 14, 10, 3, 11)
-# SELECT COUNT(ID) AS COUNT
+-- 코드를 작성해주세요
+# SELECT *
 # FROM ECOLI_DATA
-# WHERE (GENOTYPE & 2) = 0  -- 2번 형질이 없는 경우
-# AND ((GENOTYPE & 1) > 0 OR (GENOTYPE & 3) > 0 OR (GENOTYPE & 4) > 0);  -- 1번 또는 3번 형질 포함
+# WHERE 1=1 
+# AND GENOTYPE & 2
+# OR GENOTYPE | 1 -- 0001
+# OR GENOTYPE | 8; -- 1000 => 0101 => 5
+-- 0001, 1000, 1100, 1101(13)
 
--- 좀더 단순화 시키면..
-SELECT COUNT(ID) AS COUNT
+SELECT COUNT(*) AS COUNT
 FROM ECOLI_DATA
-WHERE (GENOTYPE & 2) = 0  -- 2번 형질이 없는 경우
-AND GENOTYPE & 5 > 0
+WHERE 1=1
+AND GENOTYPE & 2 = 0
+AND GENOTYPE & 5 >= 1
